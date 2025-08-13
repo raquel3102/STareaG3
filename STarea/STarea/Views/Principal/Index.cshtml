@@ -1,0 +1,67 @@
+﻿@{
+    ViewData["Title"] = "Inicio - Sistema de Gestión de Pagos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Templates/css/generales.css" rel="stylesheet" />
+
+<div class="jumbotron welcome-banner" style="background-color: #0d6efd; color: white; padding: 40px 20px; border-radius: 8px; margin-top: 20px;">
+    <div class="container text-center">
+        <h1 style="color: white;">
+            <i class="glyphicon glyphicon-ok-circle" style="color: white; margin-right: 10px;"></i> ¡Bienvenido al Sistema de Pagos!
+        </h1>
+        <p class="lead" style="color: white;">Gestión eficiente de abonos y control de saldos pendientes</p>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row system-overview">
+        <div class="col-md-8 offset-md-2">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="glyphicon glyphicon-info-sign"></i> Sobre el sistema</h3>
+                </div>
+                <div class="panel-body">
+                    <p>
+                        Nuestro sistema de gestión de pagos está diseñado para ayudarte a mantener un control preciso
+                        de los abonos realizados y los saldos pendientes. Con esta herramienta podrás:
+                    </p>
+                    <ul>
+                        <li>Consultar el estado actual de todos los productos</li>
+                        <li>Registrar abonos parciales de forma sencilla</li>
+                        <li>Visualizar el historial de pagos</li>
+                        <li>Automatizar el cambio de estado al completar el pago</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row quick-access mt-4">
+    <div class="col-md-2"></div>
+
+    <div class="col-md-4">
+        <div class="thumbnail access-card">
+            <div class="caption text-center">
+                <i class="glyphicon glyphicon-search" style="font-size: 48px; color: #3498db;"></i>
+                <h3>Consulta</h3>
+                <p>Visualiza todos los productos y su estado actual</p>
+                <a asp-action="Consulta" asp-controller="Principal" class="btn btn-primary btn-block">Acceder</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="thumbnail access-card">
+            <div class="caption text-center">
+                <i class="glyphicon glyphicon-usd" style="font-size: 48px; color: #2ecc71;"></i>
+                <h3>Registro</h3>
+                <p>Ingresa nuevos abonos a productos pendientes</p>
+                <a asp-action="Registro" asp-controller="Abono" class="btn btn-success btn-block">Acceder</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-2"></div>
+</div>

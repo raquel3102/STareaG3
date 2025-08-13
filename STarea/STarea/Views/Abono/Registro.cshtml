@@ -1,0 +1,71 @@
+﻿@model STarea.Models.AbonoModel
+
+@{
+    ViewData["Title"] = "Registro";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Registro de Abono</h2>
+
+    @if (ViewBag.Mensaje != null)
+    {
+        <div class="alert alert-warning text-center">
+            @ViewBag.Mensaje
+        </div>
+    }
+
+    <form asp-action="Registro" asp-controller="Abono" method="post">
+        <div class="form-group mb-3">
+            <label for="Id_Compra">Compra:</label>
+            <select asp-for="Id_Compra" asp-items="ViewBag.PuestoCombo" class="form-control" required></select>
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="SaldoAnterior">Saldo Anterior:</label>
+            <input type="text" id="SaldoAnterior" name="SaldoAnterior" class="form-control" readonly />
+        </div>
+
+        <div class="form-group mb-4">
+            <label for="Monto">Monto del Abono:</label>
+            <input asp-for="Monto" class="form-control" placeholder="$" type="number" min="1" required />
+        </div>
+
+        <div class="d-flex justify-content-between">
+            <a asp-action="Index" asp-controller="Principal">
+                <i class="fa fa-backward fa-2x"></i>
+            </a>
+            <input type="submit" class="btn btn-primary btn-user btn-block" value="Abonar" />
+        </div>
+    </form>
+</div>
+
+<script src="~/Templates/js/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#Id_Compra').change(function () {
+            var idCompra = $(this).val();
+
+            if (idCompra !== "") {
+                $.ajax({
+                    url: '/Abono/ObtenerSaldo',
+                    type: 'GET',
+                    data: { idCompra: idCompra },
+                    success: function (response) {
+                        if (response.success) {
+                            $('#SaldoAnterior').val(response.saldo.toLocaleString('es-MX', { style: 'currency', currency: 'MXN' }));
+                        } else {
+                            $('#SaldoAnterior').val('');
+                            alert(response.message);
+                        }
+                    },
+                    error: function () {
+                        alert('Ocurrió un error al obtener el saldo.');
+                    }
+                });
+            } else {
+                $('#SaldoAnterior').val('');
+            }
+        });
+    });
+</script>

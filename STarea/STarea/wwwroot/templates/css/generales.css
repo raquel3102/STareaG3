@@ -1,0 +1,26 @@
+﻿.welcome-banner {
+    background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+    color: white;
+    margin-top: -20px;
+    padding: 40px 0;
+    border-radius: 0;
+    margin-bottom: 30px;
+}
+
+.access-card {
+    transition: all 0.3s ease;
+    border-radius: 5px;
+}
+
+    .access-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+.system-overview {
+    margin-bottom: 40px;
+}
+
+.quick-access {
+    margin-bottom: 30px;
+}
