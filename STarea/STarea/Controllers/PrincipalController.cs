@@ -1,19 +1,22 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using STarea.Services;
 using STarea.Models;
 using System;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using Microsoft.Extensions.Configuration;
+using static System.Net.WebRequestMethods;
 
 namespace STarea.Controllers
 {
     public class PrincipalController : Controller
     {
-        private readonly ApiService _apiService;
+        private readonly IConfiguration _configuration;
+        private readonly IHttpClientFactory _http;
 
-        public PrincipalController(ApiService apiService)
+        public PrincipalController(IConfiguration configuration, IHttpClientFactory http)
         {
-            _apiService = apiService;
+            _configuration = configuration;
+            _http = http;
         }
 
         [HttpGet]
@@ -23,16 +26,29 @@ namespace STarea.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Consulta()
+        public IActionResult ConsultarCasas()
         {
-            try
+            using (var http = _http.CreateClient())
             {
-                List<ConsultaModel> info = await _apiService.GetConsultasAsync();
-                return View(info);
-            }
-            catch (Exception)
-            {
-                return View("Error");
+
+                http.BaseAddress = new Uri(_configuration.GetSection("Start:ApiUrl").Value!);
+
+                var resultado = http.GetAsync("api/Principal/ConsultarCasas").Result;
+
+                if (resultado.IsSuccessStatusCode)
+                {
+                    var datos = resultado.Content.ReadFromJsonAsync<Respuesta<List<Casa>>>().Result;
+
+
+
+                    return View(datos?.Contenido);
+                }
+                else
+                {
+                    var respuesta = resultado.Content.ReadFromJsonAsync<Respuesta>().Result;
+                    ViewBag.Mensaje = respuesta?.Mensaje;
+                    return View(new List<Casa>());
+                }
             }
         }
     }

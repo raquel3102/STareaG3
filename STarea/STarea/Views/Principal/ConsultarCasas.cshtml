@@ -1,0 +1,44 @@
+﻿@model List<Casa>
+@{
+    Layout = "_Layout";
+}
+<div class="col-12">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Consulta de Casas</h4>
+        </div>
+        <hr>
+
+        <input id="Mensaje" type="hidden" value="@ViewBag.Mensaje" />
+
+        <div class="card-body">
+
+            <table id="tablaDatos" class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Descripción</th>
+                        <th>Precio</th>
+                        <th>Usuario</th>
+                        <th>Estado</th>
+                        <th>Fecha de Alquiler</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.DescripcionCasa</td>
+                            <td> $ @item.PrecioCasa.ToString("N2")</td>
+                            <td>@item.UsuarioAlquiler</td>
+                            <td>@(item.Estado ? "Reservada" : "Disponible")</td>
+                            <td>@item.FechaAlquiler.ToString("dd/MM/yyyy")</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+        <hr>
+    </div>
+</div>
+

@@ -1,5 +1,4 @@
 ﻿@{
-    ViewData["Title"] = "Inicio - Sistema de Gestión de Pagos";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -8,7 +7,7 @@
 <div class="jumbotron welcome-banner" style="background-color: #0d6efd; color: white; padding: 40px 20px; border-radius: 8px; margin-top: 20px;">
     <div class="container text-center">
         <h1 style="color: white;">
-            <i class="glyphicon glyphicon-ok-circle" style="color: white; margin-right: 10px;"></i> ¡Bienvenido al Sistema de Pagos!
+            <i class="glyphicon glyphicon-ok-circle" style="color: white; margin-right: 10px;"></i> ¡Bienvenido al Sistema de Casas!
         </h1>
         <p class="lead" style="color: white;">Gestión eficiente de abonos y control de saldos pendientes</p>
     </div>
@@ -45,9 +44,9 @@
         <div class="thumbnail access-card">
             <div class="caption text-center">
                 <i class="glyphicon glyphicon-search" style="font-size: 48px; color: #3498db;"></i>
-                <h3>Consulta</h3>
-                <p>Visualiza todos los productos y su estado actual</p>
-                <a asp-action="Consulta" asp-controller="Principal" class="btn btn-primary btn-block">Acceder</a>
+                <h3>Consultas de Casas</h3>
+                <p>Visualiza todas las casas y su estado actual</p>
+                <a asp-action="ConsultarCasas" asp-controller="Principal" class="btn btn-primary btn-block">Acceder</a>
             </div>
         </div>
     </div>

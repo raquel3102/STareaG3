@@ -18,10 +18,6 @@ namespace STarea.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
 
         
     }
