@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Extensions.Configuration;
 using STarea.Models;
 using System;
-using System.Threading.Tasks;
 using System.Collections.Generic;
-using Microsoft.Extensions.Configuration;
+using System.Net.Http;
+using System.Threading.Tasks;
 using static System.Net.WebRequestMethods;
 
 namespace STarea.Controllers
@@ -51,5 +53,59 @@ namespace STarea.Controllers
                 }
             }
         }
+
+
+
+        [HttpGet]
+        public IActionResult Alquilar()
+        {
+            using (var http = _http.CreateClient())
+            {
+                http.BaseAddress = new Uri(_configuration.GetSection("Start:ApiUrl").Value!);
+
+                // Llamamos al API que lista las casas
+                var resultado = http.GetAsync("api/Principal/ConsultarCasas").Result;
+
+                if (resultado.IsSuccessStatusCode)
+                {
+                    var casas = resultado.Content.ReadFromJsonAsync<Respuesta<List<Casa>>>().Result;
+
+                    // Sólo mostrar las casas que NO están alquiladas
+                    var casasDisponibles = casas!.Contenido!.Where(c => string.IsNullOrEmpty(c.UsuarioAlquiler)).ToList();
+
+                    ViewBag.Casas = new SelectList(casasDisponibles, "IdCasa", "IdCasa");
+                }
+                else
+                {
+                    ViewBag.Casas = new SelectList(new List<Casa>(), "IdCasa", "IdCasa");
+                }
+            }
+
+            return View();
+        }
+
+
+        [HttpPost]
+        public IActionResult Alquilar (Casa casa)
+        {
+            using (var http = _http.CreateClient())
+            {
+                http.BaseAddress = new Uri(_configuration.GetSection("Start:ApiUrl").Value!);
+                var resultado = http.PostAsJsonAsync("api/Principal/Alquilar", casa).Result;
+                if (resultado.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("ConsultarCasas", "Principal");
+                }
+                else
+                {
+                    var respuesta = resultado.Content.ReadFromJsonAsync<Respuesta>().Result;
+                    ViewBag.Mensaje = respuesta!.Mensaje;
+                    return View(casa);
+                }
+            }
+        }
+
+
+
     }
 }

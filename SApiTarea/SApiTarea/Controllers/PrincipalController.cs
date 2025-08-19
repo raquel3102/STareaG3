@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using SApiTarea.Models;
 using SApiTarea.Services;
+using System.Data;
 
 namespace SApiTarea.Controllers
 {
@@ -46,6 +47,36 @@ namespace SApiTarea.Controllers
                 }
             }
 
+        }
+
+        [HttpPost]
+        [Route("Alquilar")]
+        public IActionResult Alquilar(Casa casa)
+        {
+            if (casa == null || string.IsNullOrWhiteSpace(casa.UsuarioAlquiler))
+            {
+                return BadRequest("Debe ingresar el usuario que alquila y la casa.");
+            }
+
+            using (var connection = new SqlConnection((_configuration.GetSection("ConnectionStrings:Connection").Value)))
+            {
+                var resultado = connection.Execute("sp_AlquilarCasa",
+                    new
+                    {
+                        IdCasa = casa.IdCasa,
+                        UsuarioAlquiler = casa.UsuarioAlquiler
+                    }
+                );
+
+                if (resultado > 0)
+                {
+                    return Ok(_respuesta.RespuestaCorrecta(casa));
+                }
+                else
+                {
+                    return BadRequest("No se pudo realizar el alquiler. Verifique la información.");
+                }
+            }
         }
     }
 }
