@@ -1,66 +1,214 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <link href="~/Templates/css/generales.css" rel="stylesheet" />
 
-<div class="jumbotron welcome-banner" style="background-color: #0d6efd; color: white; padding: 40px 20px; border-radius: 8px; margin-top: 20px;">
-    <div class="container text-center">
-        <h1 style="color: white;">
-            <i class="glyphicon glyphicon-ok-circle" style="color: white; margin-right: 10px;"></i> ¡Bienvenido al Sistema de Casas!
-        </h1>
-        <p class="lead" style="color: white;">Gestión eficiente de abonos y control de saldos pendientes</p>
+<!-- Hero Banner mejorado -->
+<div class="container-fluid mt-4">
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <div class="bg-primary text-white rounded-4 p-5 text-center shadow-lg position-relative overflow-hidden">
+                <!-- Hero Banner mejorado -->
+
+                <div class="position-relative">
+                    <div class="mb-4">
+                        <div class="bg-white bg-opacity-25 rounded-circle d-inline-flex align-items-center justify-content-center p-3">
+                            <i class="fas fa-check-circle fs-1"></i>
+                        </div>
+                    </div>
+                    <h1 class="display-4 fw-bold mb-3 bg-primary text-white">¡Bienvenido al Sistema de Casas!</h1>
+                    <p class="lead fs-4 mb-4 opacity-90">Gestión eficiente de propiedades y control de alquileres</p>
+                    <div class="d-flex justify-content-center gap-3 flex-wrap">
+                        <div class="bg-white bg-opacity-25 rounded-pill px-4 py-2">
+                            <i class="fas fa-shield-alt me-2"></i>
+                            <span class="fw-semibold">Seguro</span>
+                        </div>
+                        <div class="bg-white bg-opacity-25 rounded-pill px-4 py-2">
+                            <i class="fas fa-bolt me-2"></i>
+                            <span class="fw-semibold">Rápido</span>
+                        </div>
+                        <div class="bg-white bg-opacity-25 rounded-pill px-4 py-2">
+                            <i class="fas fa-cogs me-2"></i>
+                            <span class="fw-semibold">Eficiente</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
-<div class="container">
-    <div class="row system-overview">
-        <div class="col-md-8 offset-md-2">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="glyphicon glyphicon-info-sign"></i> Sobre el sistema</h3>
+<!-- Información del sistema -->
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="card shadow-sm border-0 rounded-4">
+                <div class="card-header bg-light border-0 py-4">
+                    <div class="d-flex align-items-center">
+                        <div class="bg-primary bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                            <i class="fas fa-info-circle text-primary fs-4"></i>
+                        </div>
+                        <div>
+                            <h3 class="mb-1 fw-bold text-dark">Sobre el sistema</h3>
+                            <p class="mb-0 text-muted">Conoce las características y funcionalidades</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="panel-body">
-                    <p>
-                        Nuestro sistema de gestión de pagos está diseñado para ayudarte a mantener un control preciso
-                        de los abonos realizados y los saldos pendientes. Con esta herramienta podrás:
+                <div class="card-body p-4">
+                    <p class="fs-6 text-muted mb-4 lh-lg">
+                        Nuestro sistema de gestión de propiedades está diseñado para ayudarte a mantener un control preciso
+                        de los alquileres realizados y el estado de las propiedades. Con esta herramienta podrás:
                     </p>
-                    <ul>
-                        <li>Consultar el estado actual de todos los productos</li>
-                        <li>Registrar abonos parciales de forma sencilla</li>
-                        <li>Visualizar el historial de pagos</li>
-                        <li>Automatizar el cambio de estado al completar el pago</li>
-                    </ul>
+
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-start">
+                                <div class="bg-success bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center me-3 flex-shrink-0" style="width: 40px; height: 40px;">
+                                    <i class="fas fa-search text-success"></i>
+                                </div>
+                                <div>
+                                    <h6 class="fw-semibold text-dark mb-2">Consultar el estado actual</h6>
+                                    <p class="text-muted mb-0 small">Visualiza todas las propiedades y su disponibilidad en tiempo real</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-start">
+                                <div class="bg-info bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center me-3 flex-shrink-0" style="width: 40px; height: 40px;">
+                                    <i class="fas fa-plus text-info"></i>
+                                </div>
+                                <div>
+                                    <h6 class="fw-semibold text-dark mb-2">Registrar alquileres</h6>
+                                    <p class="text-muted mb-0 small">Procesa nuevos alquileres de forma sencilla y eficiente</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-start">
+                                <div class="bg-warning bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center me-3 flex-shrink-0" style="width: 40px; height: 40px;">
+                                    <i class="fas fa-history text-warning"></i>
+                                </div>
+                                <div>
+                                    <h6 class="fw-semibold text-dark mb-2">Historial completo</h6>
+                                    <p class="text-muted mb-0 small">Accede al historial detallado de todas las transacciones</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-start">
+                                <div class="bg-primary bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center me-3 flex-shrink-0" style="width: 40px; height: 40px;">
+                                    <i class="fas fa-sync-alt text-primary"></i>
+                                </div>
+                                <div>
+                                    <h6 class="fw-semibold text-dark mb-2">Actualización automática</h6>
+                                    <p class="text-muted mb-0 small">El estado se actualiza automáticamente al completar transacciones</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<div class="row quick-access mt-4">
-    <div class="col-md-2"></div>
-
-    <div class="col-md-4">
-        <div class="thumbnail access-card">
-            <div class="caption text-center">
-                <i class="glyphicon glyphicon-search" style="font-size: 48px; color: #3498db;"></i>
-                <h3>Consultas de Casas</h3>
-                <p>Visualiza todas las casas y su estado actual</p>
-                <a asp-action="ConsultarCasas" asp-controller="Principal" class="btn btn-primary btn-block">Acceder</a>
+<!-- Accesos rápidos mejorados -->
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <div class="text-center mb-4">
+                <h3 class="fw-bold text-dark mb-2">Accesos Rápidos</h3>
+                <p class="text-muted">Selecciona la acción que deseas realizar</p>
             </div>
         </div>
     </div>
 
-    <div class="col-md-4">
-        <div class="thumbnail access-card">
-            <div class="caption text-center">
-                <i class="glyphicon glyphicon-usd" style="font-size: 48px; color: #2ecc71;"></i>
-                <h3>Registro</h3>
-                <p>Ingresa nuevos abonos a productos pendientes</p>
-                <a asp-action="Alquilar" asp-controller="Principal" class="btn btn-success btn-block">Acceder</a>
+    <div class="row g-0">
+        <div class="col-md-6">
+            <div class="bg-primary text-white position-relative overflow-hidden rounded-start-4" style="min-height: 400px;">
+                <div class="d-flex flex-column justify-content-center h-100 p-5 position-relative">
+                    <div class="text-start mb-4">
+                        <h3 class="fw-bold mb-3">Consultas de Casas</h3>
+                        <p class="mb-0 lh-lg opacity-90">Visualiza todas las propiedades, su estado actual, precios y disponibilidad en una interfaz intuitiva</p>
+                    </div>
+
+                    <div class="mb-4">
+                        <div class="d-flex gap-2 flex-wrap">
+                            <span class="bg-white bg-opacity-25 px-3 py-2 rounded-pill fw-semibold small">
+                                <i class="fas fa-eye me-1"></i>Vista detallada
+                            </span>
+                            <span class="bg-white bg-opacity-25 px-3 py-2 rounded-pill fw-semibold small">
+                                <i class="fas fa-filter me-1"></i>Filtros avanzados
+                            </span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <a asp-action="ConsultarCasas" asp-controller="Principal" class="btn btn-light btn-lg rounded-pill fw-semibold text-primary w-100 py-3">
+                            <i class="fas fa-arrow-right me-2"></i>
+                            Acceder
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="bg-success text-white position-relative overflow-hidden rounded-end-4" style="min-height: 400px;">
+                <div class="d-flex flex-column justify-content-center h-100 p-5 position-relative">
+                    <div class="text-start mb-4">
+                        <h3 class="fw-bold mb-3">Registro de Alquiler</h3>
+                        <p class="mb-0 lh-lg opacity-90">Procesa nuevos alquileres de propiedades de manera rápida y segura con nuestro sistema automatizado</p>
+                    </div>
+
+                    <div class="mb-4">
+                        <div class="d-flex gap-2 flex-wrap">
+                            <span class="bg-white bg-opacity-25 px-3 py-2 rounded-pill fw-semibold small">
+                                <i class="fas fa-bolt me-1"></i>Proceso rápido
+                            </span>
+                            <span class="bg-white bg-opacity-25 px-3 py-2 rounded-pill fw-semibold small">
+                                <i class="fas fa-shield-alt me-1"></i>Seguro
+                            </span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <a asp-action="Alquilar" asp-controller="Principal" class="btn btn-light btn-lg rounded-pill fw-semibold text-success w-100 py-3">
+                            <i class="fas fa-arrow-right me-2"></i>
+                            Acceder
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+</div>
 
-    <div class="col-md-2"></div>
+<!-- Footer con estadísticas -->
+<div class="container-fluid bg-light py-4 mt-5">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-4">
+                <div class="d-flex align-items-center justify-content-center mb-2">
+                    <i class="fas fa-users text-primary fs-4 me-2"></i>
+                    <span class="h5 mb-0 fw-bold text-primary">24/7</span>
+                </div>
+                <small class="text-muted fw-semibold">Soporte disponible</small>
+            </div>
+            <div class="col-md-4">
+                <div class="d-flex align-items-center justify-content-center mb-2">
+                    <i class="fas fa-clock text-success fs-4 me-2"></i>
+                    <span class="h5 mb-0 fw-bold text-success">< 2min</span>
+                </div>
+                <small class="text-muted fw-semibold">Tiempo de respuesta</small>
+            </div>
+            <div class="col-md-4">
+                <div class="d-flex align-items-center justify-content-center mb-2">
+                    <i class="fas fa-shield-check text-info fs-4 me-2"></i>
+                    <span class="h5 mb-0 fw-bold text-info">100%</span>
+                </div>
+                <small class="text-muted fw-semibold">Datos seguros</small>
+            </div>
+        </div>
+    </div>
 </div>
